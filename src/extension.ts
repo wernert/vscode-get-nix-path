@@ -15,9 +15,12 @@ export function activate(context: vscode.ExtensionContext) {
 	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('jaztest.helloWorld', () => {
 		// The code you place here will be executed every time your command is executed
-
+		vscode.env.clipboard.readText().then((text)=>{
+			vscode.window.showInformationMessage('jaztest clipboard:', text);
+			/* code */
+		}); 
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from jaztest!');
+		
 	});
 	let disposable2 = vscode.commands.registerCommand('jaztest.copyabsolutepath', (uri) => {
 		// The code you place here will be executed every time your command is executed
@@ -35,10 +38,9 @@ export function activate(context: vscode.ExtensionContext) {
 		
 		path = path.replace(':', '');
 
-		// copy(path)
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('copypath from jaztest: ', path);
+		vscode.env.clipboard.writeText(path).then((text) => {
+			vscode.window.showInformationMessage('copypath from jaztest: ', path);
+		});
 	});
 
 	context.subscriptions.push(disposable);
