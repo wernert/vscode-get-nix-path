@@ -35,7 +35,9 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		var path = uri.path;
+		var workspace = vscode.workspace.getWorkspaceFolder(uri)?.uri.path;
 		
+		var relpath = path.replace(workspace + '/', '');
 		path = path.replace(':', '');
 
 		vscode.env.clipboard.writeText(path).then((text) => {
