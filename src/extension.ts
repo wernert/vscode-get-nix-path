@@ -6,6 +6,32 @@ import * as vscode from 'vscode';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
+	const dopa = function(uri: vscode.Uri, absolute: boolean) {
+		if (typeof uri === 'undefined') {
+			if (vscode.window.activeTextEditor) {
+					uri = vscode.window.activeTextEditor.document.uri;
+			}
+		}
+		if (!uri) {
+				vscode.window.showErrorMessage('Cannot copy absolute path, as there appears no file is opened (or it is very large');
+				return;
+		}
+
+		var path = uri.path;
+
+		if (absolute === true){
+			path = path.replace(':', '');
+		}
+		else {
+			var workspace = vscode.workspace.getWorkspaceFolder(uri)?.uri.path;
+			path = path.replace(workspace + '/', '');
+		}
+		
+		vscode.env.clipboard.writeText(path).then((text) => {
+			// vscode.window.showInformationMessage('copypath: ', path);
+		});
+
+	};
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "jaztest" is now active!');
@@ -22,31 +48,20 @@ export function activate(context: vscode.ExtensionContext) {
 		// Display a message box to the user
 		
 	});
-	let disposable2 = vscode.commands.registerCommand('jaztest.copyabsolutepath', (uri) => {
+	let disposable2 = vscode.commands.registerCommand('jaztest.copyrelativepath', (uri) => {
+		dopa(uri, false);
+
+	});
+
+	let disposable3 = vscode.commands.registerCommand('jaztest.copyabsolutepath', (uri) => {
 		// The code you place here will be executed every time your command is executed
-		if (typeof uri === 'undefined') {
-			if (vscode.window.activeTextEditor) {
-					uri = vscode.window.activeTextEditor.document.uri;
-			}
-		}
-		if (!uri) {
-				vscode.window.showErrorMessage('Cannot copy absolute path, as there appears no file is opened (or it is very large');
-				return;
-		}
+		dopa(uri, true);
 
-		var path = uri.path;
-		var workspace = vscode.workspace.getWorkspaceFolder(uri)?.uri.path;
-		
-		var relpath = path.replace(workspace + '/', '');
-		path = path.replace(':', '');
-
-		vscode.env.clipboard.writeText(path).then((text) => {
-			vscode.window.showInformationMessage('copypath from jaztest: ', path);
-		});
 	});
 
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disposable2);
+	context.subscriptions.push(disposable3);
 }
 
 // this method is called when your extension is deactivated

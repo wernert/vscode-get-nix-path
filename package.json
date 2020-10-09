@@ -1,8 +1,8 @@
 {
 	"name": "jaztest",
-	"displayName": "jaztest",
-	"description": "",
-	"version": "0.0.1",
+	"displayName": "get nix path",
+	"description": "copy relative and absolute nix style /path",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
@@ -11,7 +11,8 @@
 	],
 	"activationEvents": [
 		"onCommand:jaztest.helloWorld",
-		"onCommand:jaztest.copyabsolutepath"
+		"onCommand:jaztest.copyabsolutepath",
+		"onCommand:jaztest.copyrelativepath"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -22,20 +23,32 @@
 			},
 			{
 				"command": "jaztest.copyabsolutepath",
-				"title": "jaz copyabsolutepath"
+				"title": "get absolute path"
+			},
+			{
+				"command": "jaztest.copyrelativepath",
+				"title": "get relative path"
 			}
 		],
 		"menus": {
       "explorer/context": [
         {
+          "command": "jaztest.copyrelativepath",
+          "group": "6_copypath@50"
+        },
+        {
           "command": "jaztest.copyabsolutepath",
-          "group": "5_cutcopypaste@50"
+          "group": "6_copypath@51"
         }
       ],
       "editor/title/context": [
         {
+          "command": "jaztest.copyrelativepath",
+          "group": "6_copypath@50"
+        },
+        {
           "command": "jaztest.copyabsolutepath",
-          "group": "5_cutcopypaste@50"
+          "group": "6_copypath@51"
         }
       ]
     }
