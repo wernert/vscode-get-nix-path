@@ -1,7 +1,7 @@
 {
 	"name": "vscode-get-nix-path",
 	"displayName": "vscode get nix path",
-	"description": "copy relative to workpsace root and absolute nix style /path",
+	"description": "get absolute or relative to workspace root nix style path",
 	"version": "0.0.3",
 	"publisher": "wernert",
 	"author": "wernert",
@@ -26,12 +26,12 @@
 			},
 			{
 				"command": "getNixPath.copyabsolutepath",
-				"title": "get absolute path",
+				"title": "get absolute nix path",
 				"category": "GetNixPath"
 			},
 			{
 				"command": "getNixPath.copyrelativepath",
-				"title": "get relative path",
+				"title": "get relative nix path",
 				"category": "GetNixPath"			
 			}
 		],
