@@ -34,26 +34,26 @@ export function activate(context: vscode.ExtensionContext) {
 	};
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "jaztest" is now active!');
+	console.log('Congratulations, your extension "get nix path" is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('jaztest.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('getNixPath.showclipboard', () => {
 		// The code you place here will be executed every time your command is executed
 		vscode.env.clipboard.readText().then((text)=>{
-			vscode.window.showInformationMessage('jaztest clipboard:', text);
+			vscode.window.showInformationMessage('getNixPath clipboard:', text);
 			/* code */
 		}); 
 		// Display a message box to the user
 		
 	});
-	let disposable2 = vscode.commands.registerCommand('jaztest.copyrelativepath', (uri) => {
+	let disposable2 = vscode.commands.registerCommand('getNixPath.copyrelativepath', (uri) => {
 		dopa(uri, false);
 
 	});
 
-	let disposable3 = vscode.commands.registerCommand('jaztest.copyabsolutepath', (uri) => {
+	let disposable3 = vscode.commands.registerCommand('getNixPath.copyabsolutepath', (uri) => {
 		// The code you place here will be executed every time your command is executed
 		dopa(uri, true);
 

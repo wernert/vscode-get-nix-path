@@ -1,8 +1,8 @@
 {
-	"name": "jaztest",
-	"displayName": "get nix path",
-	"description": "copy relative and absolute nix style /path",
-	"version": "0.0.2",
+	"name": "vscode-get-nix-path",
+	"displayName": "vscode get nix path",
+	"description": "copy relative to workpsace root and absolute nix style /path",
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
@@ -10,44 +10,47 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:jaztest.helloWorld",
-		"onCommand:jaztest.copyabsolutepath",
-		"onCommand:jaztest.copyrelativepath"
+		"onCommand:getNixPath.showclipboard",
+		"onCommand:getNixPath.copyabsolutepath",
+		"onCommand:getNixPath.copyrelativepath"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "jaztest.helloWorld",
-				"title": "jaz Hello World"
+				"command": "getNixPath.showclipboard",
+				"title": "show clipboard",
+				"category": "GetNixPath"
 			},
 			{
-				"command": "jaztest.copyabsolutepath",
-				"title": "get absolute path"
+				"command": "getNixPath.copyabsolutepath",
+				"title": "get absolute path",
+				"category": "GetNixPath"
 			},
 			{
-				"command": "jaztest.copyrelativepath",
-				"title": "get relative path"
+				"command": "getNixPath.copyrelativepath",
+				"title": "get relative path",
+				"category": "GetNixPath"			
 			}
 		],
 		"menus": {
       "explorer/context": [
         {
-          "command": "jaztest.copyrelativepath",
+          "command": "getNixPath.copyrelativepath",
           "group": "6_copypath@50"
         },
         {
-          "command": "jaztest.copyabsolutepath",
+          "command": "getNixPath.copyabsolutepath",
           "group": "6_copypath@51"
         }
       ],
       "editor/title/context": [
         {
-          "command": "jaztest.copyrelativepath",
+          "command": "getNixPath.copyrelativepath",
           "group": "6_copypath@50"
         },
         {
-          "command": "jaztest.copyabsolutepath",
+          "command": "getNixPath.copyabsolutepath",
           "group": "6_copypath@51"
         }
       ]

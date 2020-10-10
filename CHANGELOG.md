@@ -1,6 +1,6 @@
 # Change Log
 
-All notable changes to the "jaztest" extension will be documented in this file.
+All notable changes to the "get nix path" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
