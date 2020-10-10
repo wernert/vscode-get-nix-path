@@ -19,12 +19,14 @@ or use command palette:
 get absolute nix path
 get relative nix path
 ```
-for debug and test ther is also 
+for debug and test there is also 
 ```
 show clipboard
 ```
 to show the clipboard content in a message box  
 
+<br>
+<br>
 
 <!-- 
 ## Extension Settings
