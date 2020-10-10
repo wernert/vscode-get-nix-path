@@ -3,6 +3,8 @@
 	"displayName": "vscode get nix path",
 	"description": "copy relative to workpsace root and absolute nix style /path",
 	"version": "0.0.3",
+	"publisher": "wernert",
+	"author": "wernert",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
