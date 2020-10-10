@@ -6,14 +6,14 @@ import * as vscode from 'vscode';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	const dopa = function(uri: vscode.Uri, absolute: boolean) {
+	const getpath = function(uri: vscode.Uri, absolute: boolean) {
 		if (typeof uri === 'undefined') {
 			if (vscode.window.activeTextEditor) {
 					uri = vscode.window.activeTextEditor.document.uri;
 			}
 		}
 		if (!uri) {
-				vscode.window.showErrorMessage('Cannot copy absolute path, as there appears no file is opened (or it is very large');
+				vscode.window.showErrorMessage('Cannot copy path, there appears no file is opened');
 				return;
 		}
 
@@ -42,20 +42,20 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('getNixPath.showclipboard', () => {
 		// The code you place here will be executed every time your command is executed
 		vscode.env.clipboard.readText().then((text)=>{
-			vscode.window.showInformationMessage('getNixPath clipboard:', text);
+			vscode.window.showInformationMessage('clipboard:', text);
 			/* code */
 		}); 
 		// Display a message box to the user
 		
 	});
 	let disposable2 = vscode.commands.registerCommand('getNixPath.copyrelativepath', (uri) => {
-		dopa(uri, false);
+		getpath(uri, false);
 
 	});
 
 	let disposable3 = vscode.commands.registerCommand('getNixPath.copyabsolutepath', (uri) => {
 		// The code you place here will be executed every time your command is executed
-		dopa(uri, true);
+		getpath(uri, true);
 
 	});
 
