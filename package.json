@@ -2,9 +2,10 @@
 	"name": "vscode-get-nix-path",
 	"displayName": "vscode get nix path",
 	"description": "get absolute or relative to workspace root nix style path",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "wernert",
 	"author": "wernert",
+	"repository": "https://github.com/wernert/vscode-get-nix-path.git",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
